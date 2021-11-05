@@ -1,12 +1,20 @@
 import { NavBar } from "../components/NavBar"
+import { withUrqlClient } from 'next-urql';
+import { createUrqlClient } from "../utils/createUrqlClient";
+import { usePostsQuery } from "../generated/graphql";
 
-const Index = () => (
-  <>
-  {/* I don't understand why this blank thing is here */}
-  {/* may be because of scope insert!! */}
-  <NavBar/>
-  <div> Bhag D K Boss Bhag </div>
-  </>
-)
+const Index = () => {
+  const [{data}] = usePostsQuery();
+  return (
+    <>
+    {/* I don't understand why this blank thing is here */}
+    {/* may be because of scope insert!! */}
+    <NavBar/>
+    <div> Posts </div>
+    <br />
+    {!data ? <div> Loading... </div>: data.posts.map((p) => <div key={p.id}> {p.title} </div>) }
+    </>
+  );
+}
 
-export default Index
+export default withUrqlClient(createUrqlClient, {ssr: true})(Index);
