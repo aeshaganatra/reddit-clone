@@ -52,7 +52,7 @@ const Login: React.FC <{}> = ({}) =>  {
                                 </Link>
                             </NextLink>
                         </Flex>
-                        <Button mt={4} type="submit" isLoading={isSubmitting} variantColor="teal"> register </Button>
+                        <Button mt={4} type="submit" isLoading={isSubmitting} variantColor="teal"> Login </Button>
                     </Form>
                </Wrapper>
            )}
