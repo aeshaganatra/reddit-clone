@@ -16,7 +16,7 @@ import { User } from "./entities/User";
 
 const main = async () => {
 
-    const conn = createConnection({
+    await createConnection({
         type: "mysql",
         database: "lireddit2",
         username: "root",
