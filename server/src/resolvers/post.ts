@@ -59,7 +59,7 @@ export class PostResolver {
     @Mutation(() => Boolean)
     @UseMiddleware(isAuth)
     async vote(
-        @Arg("posId", () => Int) postId: number,
+        @Arg("postId", () => Int) postId: number,
         @Arg("value", () => Int) value: number,
         @Ctx() {req}: MyContext
     ){
