@@ -72,7 +72,7 @@ export type User = {
 
 export type Mutation = {
   __typename?: 'Mutation';
-  vote: Scalars['Boolean'];
+  vote: Scalars['Int'];
   createPost?: Maybe<Post>;
   updatePost: Post;
   deletePost: Scalars['Boolean'];

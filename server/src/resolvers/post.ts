@@ -35,6 +35,7 @@ class PostType{
 
     @Field()
     createdAt: string
+    
 
 }
 
@@ -56,7 +57,7 @@ export class PostResolver {
         return root.text.slice(0, 50);
     }
 
-    @Mutation(() => Boolean)
+    @Mutation(() => Int)
     @UseMiddleware(isAuth)
     async vote(
         @Arg("postId", () => Int) postId: number,
@@ -67,18 +68,37 @@ export class PostResolver {
         const realValue = isUpdoot ? 1 : -1;   
         const  userId  = req.session.userId;
 
-        await Updoot.insert({
-            userId: userId,
-            postId: postId,
-            value: realValue 
-        });
-        await getConnection().query(`
-            update post
-            set points = points  + ${realValue}     
-            where id = ${postId};
-        `);
-        
-        return true;
+        const updoot = await Updoot.findOne({where: {postId, userId}});
+        // the user has post before
+        if(updoot && updoot.value != realValue){
+            
+            updoot.value = realValue;
+            await Updoot.save(updoot);
+            
+            await getConnection().query(`
+                update post
+                set points = points  + ${2*realValue}     
+                where id = ${postId};
+            `);
+            
+            return 2*realValue;
+        } else if(!updoot){
+            // they don't have voted 
+            await Updoot.insert({
+                userId: userId,
+                postId: postId,
+                value: realValue 
+            });
+            await getConnection().query(`
+                update post
+                set points = points  + ${realValue}     
+                where id = ${postId};
+            `);
+            
+            return realValue;
+        }
+
+        return 0;
     }
 
     @Query(() => PaginatedPosts)
