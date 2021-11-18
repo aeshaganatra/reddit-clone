@@ -2,7 +2,7 @@ import { withUrqlClient } from 'next-urql';
 import { createUrqlClient } from "../utils/createUrqlClient";
 import { usePostsQuery } from "../generated/graphql";
 import { Layout } from "../components/Layout";
-import { Box, Button, Flex, Stack, Link, Heading, Text, IconButton } from "@chakra-ui/core";
+import { Box, Button, Flex, Stack, Link, Heading, Text } from "@chakra-ui/core";
 import NextLink from "next/link"
 import { useState } from 'react';
 import { UpdootSection } from '../components/UpdootSection';

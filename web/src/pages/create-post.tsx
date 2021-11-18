@@ -1,9 +1,9 @@
 import { Box, Button, Textarea, Text } from "@chakra-ui/core";
 import { Formik, Form } from "formik";
 import { __InputValue } from "graphql";
-import React, {useEffect, useState} from "react"
+import React, {useState} from "react"
 import { InputField } from "../components/inputField";
-import { useCreatePostMutation, useMeQuery } from "../generated/graphql";
+import { useCreatePostMutation} from "../generated/graphql";
 import { useRouter } from "next/router";
 import { withUrqlClient } from "next-urql";
 import { createUrqlClient } from "../utils/createUrqlClient";

@@ -1,8 +1,7 @@
 import { dedupExchange, fetchExchange, stringifyVariables } from 'urql';
 import { cacheExchange, Resolver } from '@urql/exchange-graphcache';
 import { betterUpdateQuery } from './betterUpdateQuery';
-import { CreatePostMutation, LoginMutation, LogoutMutation, MeDocument, MeQuery, RegisterMutation, VoteMutationVariables } from '../generated/graphql';
-import gql from "graphql-tag";
+import { LoginMutation, LogoutMutation, MeDocument, MeQuery, RegisterMutation } from '../generated/graphql';
 import { pipe, tap } from "wonka";
 import { Exchange } from "urql"
 import Router from "next/router";
