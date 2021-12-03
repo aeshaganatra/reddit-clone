@@ -1,6 +1,9 @@
 ### Reddit-Clone
 This project only for learning purpose.
 
+#### Video :)
+> https://drive.google.com/drive/folders/1GeuDuq5ZSxKqoK6d9btw_yUzR-r76veC?usp=sharing
+
 #### Technology 📶
 * Backend: NodeJS
 * Front-end: NextJS, ChakraUI
